@@ -23,7 +23,9 @@ class StoreQuoteRequest extends FormRequest
     {
         return [
             'quote' => 'required|string',
-            
+            'author' => 'required|string|max:100',
+            'category' => 'nullable|string',
+            'source' => 'required|string',
         ];
     }
 }

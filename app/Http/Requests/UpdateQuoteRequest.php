@@ -11,7 +11,7 @@ class UpdateQuoteRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,10 @@ class UpdateQuoteRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'quote' => 'sometimes|string',
+            'author' => 'sometimes|string|max:100',
+            'category' => 'sometimes|string',
+            'source' => 'sometimes|string',
         ];
     }
 }
