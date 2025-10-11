@@ -3,14 +3,14 @@ import { useCallback, useEffect, useState } from "react";
 
 export default function QuotePage() {
     const [isLoading, setIsLoading] = useState(false);
-    const [quote, setQuote] = useState([]);
+    const [quotes, setQuotes] = useState([]);
 
-    const fetchQuote = useCallback(async () => {
+    const fetchQuotes = useCallback(async () => {
         try {
             setIsLoading(true);
             const response = await http.get("/quotes");
 
-            setQuote(response.data.data);
+            setQuotes(response.data.data);
 
         } catch (error){
             console.log(error);
@@ -32,7 +32,7 @@ export default function QuotePage() {
                  {quotes.map((quote) => (
                     <li key={quote.id} className="pt-4 p-5 border border-slate-300">
                         <blockquote className="text-zinc-800 dark:text-zinc-100 italic">
-                            “{quote.quote}”
+                            "{quote.quote}"
                         </blockquote>
                         <div className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
                             — {quote.author}
