@@ -31,7 +31,7 @@ export default function QuotePage() {
             <ul className="space-y-4 divide-y divide-zinc-200 dark:divide-zinc-700">
                  {quotes.map((quote) => (
                     <li key={quote.id} className="pt-4 p-5 border border-slate-300">
-                        <blockquote className="text-zinc-800 dark:text-zinc-100 italic">
+                        <blockquote className="text-neutral-700 italic">
                             "{quote.quote}"
                         </blockquote>
                         <div className="mt-1 text-sm text-zinc-500 dark:text-zinc-400">
@@ -47,7 +47,7 @@ export default function QuotePage() {
                     </li>
                 ))}
             </ul>
-            </div>
+        </div>
     }
 
 

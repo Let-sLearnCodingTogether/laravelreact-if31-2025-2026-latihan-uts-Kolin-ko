@@ -5,7 +5,7 @@ import QuotePage from './pages/quotes/Quote'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <div className='bg-blue-500'>
+    <div className='bg-amber-50'>
         <QuotePage />
     </div>
   </StrictMode>,
