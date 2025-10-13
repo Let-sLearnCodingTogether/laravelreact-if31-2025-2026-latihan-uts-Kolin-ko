@@ -1,5 +1,7 @@
-import http from "@api/apiClient";
+import http from "@/api/apiClient";
 import { useCallback, useEffect, useState } from "react";
+import { NavLink } from "react-router-dom";
+import Button from "@/components/ui/Button";
 
 export default function QuotePage() {
     const [isLoading, setIsLoading] = useState(false);
@@ -19,6 +21,30 @@ export default function QuotePage() {
         }
     }, [])
 
+
+    // Kode lain
+
+    const deleteQuote = async (id) => {
+
+        try {
+            // 1. Tampilkan indikator loading
+            setIsLoading(true);
+            // 2. Kirim permintaan DELETE ke API
+            const response = await http.delete(`/quotes/${id}`);
+            // 3. Jika berhasil, muat ulang data kutipan
+            if (response.status === 200) {
+                fetchQuotes();
+            }
+        } catch (error) {
+            // 4. Tangani jika terjadi error
+            console.error("Gagal menghapus quote:", error);
+        } finally {
+            // 5. Sembunyikan indikator loading
+            setIsLoading(false);
+        }
+    }
+
+
      useEffect(() => {
         fetchQuotes()
     }, [fetchQuotes])
@@ -28,6 +54,12 @@ export default function QuotePage() {
     } else {
         return <div className="container mx-auto space-y-5">
             <h1 className="font-semibold text-2xl">Quotes</h1>
+            <NavLink
+                to="/new-quote"
+                className="inline-block bg-amber-500 text-white px-4 py-2 rounded hover:bg-amber-600 transition"
+            >
+                Buat Quote Baru
+            </NavLink>
             <ul className="space-y-4 divide-y divide-zinc-200 dark:divide-zinc-700">
                  {quotes.map((quote) => (
                     <li key={quote.id} className="pt-4 p-5 border border-slate-300">
@@ -44,6 +76,9 @@ export default function QuotePage() {
                                 {quote.category}
                             </span>
                         )}
+                        <div className="mt-5">
+                            <Button onClick={() => deleteQuote(quote.id)}>Hapus</Button>
+                        </div>
                     </li>
                 ))}
             </ul>

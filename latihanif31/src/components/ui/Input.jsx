@@ -4,7 +4,7 @@ export default function Input({ id, type = "text", label, ...props }) {
             {label && (
                 <label
                 htmlFor={id}
-                className="text-sm font-medium text-zinc-800 dark:text-zinc-200"
+                className="text-sm font-medium text-zinc-800"
                 >
                     {label}
                 </label>
