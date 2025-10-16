@@ -1,6 +1,6 @@
-import http from "@api/apiClient";
-import Button from "@components/ui/Button";
-import Input from "@components/ui/Input";
+import http from "@/api/apiClient";
+import Button from "@/components/ui/Button";
+import Input from "@/components/ui/Input";
 import { useCallback, useEffect, useId, useState } from "react";
 import { useNavigate, useParams } from "react-router";
 
